@@ -1,0 +1,61 @@
+{
+  "name": "hybrid-crypto-lib",
+  "version": "1.0.0",
+  "description": "Hybrid RSA + AES encryption library with mnemonic-based key derivation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "expo-module.config.json",
+    "README.md",
+    "GETTING_STARTED.md",
+    "PUBLISHING.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "rsa",
+    "aes",
+    "encryption",
+    "hybrid",
+    "mnemonic",
+    "crypto"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "base64-arraybuffer": "^1.0.2",
+    "node-forge": "^1.3.3"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "expo-crypto": "*",
+    "expo-secure-store": "*",
+    "react-native": "*"
+  },
+  "peerDependenciesMeta": {
+    "expo": { "optional": true },
+    "expo-crypto": { "optional": true },
+    "expo-secure-store": { "optional": true },
+    "react-native": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/node-forge": "^1.3.14",
+    "expo-modules-core": "^3.0.0",
+    "typescript": "~5.9.2"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./react-native": {
+      "types": "./dist/react-native.d.ts",
+      "default": "./dist/react-native.js"
+    }
+  }
+}
