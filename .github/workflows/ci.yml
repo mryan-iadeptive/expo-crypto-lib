@@ -1,49 +1,66 @@
 name: CI
 
+# Runs for the default branch (main) and for PRs targeting it.
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   check:
+    name: Check (Node.js ${{ matrix.node-version }})
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     strategy:
       matrix:
         node-version: ['18', '20', '22']
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Install
+      - name: Install dependencies
         run: npm ci
 
-      - name: Typecheck, lint, test, build
+      - name: Typecheck, lint, test, and build
         run: npm run ci
         env:
           CI: true
 
   pack:
+    name: Verify npm pack (publish contents)
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install and build
+      - name: Install dependencies and build
         run: npm ci && npm run build
 
-      - name: Verify published files (npm pack)
+      # Guards package.json "files" and critical entries for published consumers.
+      - name: Verify tarball includes dist, config, and docs
         run: |
+          set -e
           npm pack --dry-run 2>&1 | tee pack-list.txt
+          test -f pack-list.txt || (echo "npm pack --dry-run produced no output" && exit 1)
           grep -q 'dist/' pack-list.txt || (echo "Missing dist/" && exit 1)
           grep -q 'expo-module.config.json' pack-list.txt || (echo "Missing expo-module.config.json" && exit 1)
           grep -q 'README.md' pack-list.txt || (echo "Missing README.md" && exit 1)

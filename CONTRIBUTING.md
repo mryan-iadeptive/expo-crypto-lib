@@ -26,7 +26,7 @@ If you discover a security vulnerability, **do not open a public issue.** Report
 - **TypeScript:** New code must be written in TypeScript with accurate types (no `any` without justification).
 - **Deterministic behavior:** Cryptographic behavior must be deterministic and consistent across iOS, Android, web, and Node. Changes that affect output (e.g. key derivation, encryption format) require tests and documentation.
 - **Tests:** We use Jest. All logic-related PRs must include or update tests; run `npm test` before submitting.
-- **CI:** All commits must pass the CI pipeline (typecheck, lint, test, build). PRs are merged only when CI is green.
+- **CI:** All commits must pass the CI pipeline (typecheck, lint, test, build). PRs are merged only when CI is green. CI runs for the default branch (`main`) and for pull requests targeting it; if the default branch is renamed, the workflow in `.github/workflows/ci.yml` must be updated.
 
 ## Pull request process
 
