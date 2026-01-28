@@ -2,7 +2,7 @@
  * Forge Performance Optimization for React Native
  *
  * Patches node-forge's BigInteger.modPow() with react-native-modpow for faster RSA key generation.
- * Import from 'hybrid-crypto-lib/react-native' and call applyForgeOptimization() at app startup.
+ * Import from 'expo-crypto-lib/react-native' and call applyForgeOptimization() at app startup.
  *
  * Requires optional peer dependency: react-native-modpow
  */

@@ -1,4 +1,4 @@
-# Getting Started with hybrid-crypto-lib
+# Getting Started with expo-crypto-lib
 
 This document explains **where the library lives**, **how to install and build it**, and **how to use it** in an app (Expo/React Native or Node).
 
@@ -34,20 +34,20 @@ This document explains **where the library lives**, **how to install and build i
    - **npm / package.json** (if your app is next to the clone, e.g. `my-app` and `expo-crypto-lib`):
      ```json
      "dependencies": {
-       "hybrid-crypto-lib": "file:../expo-crypto-lib"
+       "expo-crypto-lib": "file:../expo-crypto-lib"
      }
      ```
-   - Then run `npm install` in the app and import from `hybrid-crypto-lib`.
+   - Then run `npm install` in the app and import from `expo-crypto-lib`.
 
 ### After publishing
 
 If the package is published to npm (or another registry), install it as usual:
 
 ```bash
-npm install hybrid-crypto-lib
+npm install expo-crypto-lib
 ```
 
-Then import from `hybrid-crypto-lib` (and optionally `hybrid-crypto-lib/react-native`).
+Then import from `expo-crypto-lib` (and optionally `expo-crypto-lib/react-native`).
 
 ---
 
@@ -65,7 +65,7 @@ const {
   EnhancedRSAManager,
   createNodeKeyStorage,
   createNodeRandomValues,
-} = require('hybrid-crypto-lib');
+} = require('expo-crypto-lib');
 
 const storage = createNodeKeyStorage();
 const random = createNodeRandomValues();
@@ -99,7 +99,7 @@ import {
   EnhancedRSAManager,
   createExpoKeyStorage,
   createExpoRandomValues,
-} from 'hybrid-crypto-lib';
+} from 'expo-crypto-lib';
 import { Platform } from 'react-native';
 
 const storage = createExpoKeyStorage();
@@ -127,7 +127,7 @@ On React Native, RSA key generation can be slow. You can patch `node-forge` with
 2. At app startup (e.g. in your root component or entry file):
 
    ```ts
-   import { applyForgeOptimization } from 'hybrid-crypto-lib/react-native';
+   import { applyForgeOptimization } from 'expo-crypto-lib/react-native';
 
    applyForgeOptimization();
    ```
@@ -169,7 +169,7 @@ The library does **not** include user IDs or backend APIs. To get behavior like 
 - **MnemonicManager** (static): `generateMnemonic(randomAdapter?)`, `mnemonicToSeed(mnemonic, passphrase?)`, `validateMnemonic(mnemonic)`
 - **Types**: `ProgressCallback`, `TransmissionPayload`, `ValidationResult`, `CryptoKeyPair`, `EnhancedRSAManagerOptions`
 - **Adapters**: `IKeyStorage`, `IRandomValues`, `createExpoKeyStorage`, `createExpoRandomValues`, `createNodeKeyStorage`, `createNodeRandomValues`
-- **React Native entry**: `applyForgeOptimization`, `isOptimizationApplied`, `performanceTest` from `hybrid-crypto-lib/react-native`
+- **React Native entry**: `applyForgeOptimization`, `isOptimizationApplied`, `performanceTest` from `expo-crypto-lib/react-native`
 
 ---
 
@@ -177,4 +177,4 @@ The library does **not** include user IDs or backend APIs. To get behavior like 
 
 - **Required**: `node-forge`, `base64-arraybuffer`.
 - **Optional (for Expo adapter)**: `expo-secure-store`, `expo-crypto`, `react-native` (peer).
-- **Optional (for Forge optimization)**: `react-native-modpow` (only when using `hybrid-crypto-lib/react-native`).
+- **Optional (for Forge optimization)**: `react-native-modpow` (only when using `expo-crypto-lib/react-native`).

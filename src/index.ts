@@ -1,5 +1,5 @@
 /**
- * hybrid-crypto-lib – Hybrid RSA + AES encryption with mnemonic-based key derivation.
+ * expo-crypto-lib – Hybrid RSA + AES encryption with mnemonic-based key derivation.
  */
 
 export { EnhancedRSAManager } from './EnhancedRSAManager';

@@ -1,6 +1,6 @@
 /**
  * React Native entry: optional Forge optimization only.
- * Import from 'hybrid-crypto-lib/react-native' to avoid pulling in react-native-modpow for non-RN consumers.
+ * Import from 'expo-crypto-lib/react-native' to avoid pulling in react-native-modpow for non-RN consumers.
  */
 
 export {

@@ -1,5 +1,5 @@
 {
-  "name": "hybrid-crypto-lib",
+  "name": "expo-crypto-lib",
   "version": "1.0.2",
   "description": "Hybrid RSA + AES encryption library with mnemonic-based key derivation",
   "main": "dist/index.js",
