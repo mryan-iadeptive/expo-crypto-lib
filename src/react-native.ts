@@ -7,4 +7,4 @@ export {
   applyForgeOptimization,
   isOptimizationApplied,
   performanceTest,
-} from './optional/ForgeOptimization';
+} from "./optional/ForgeOptimization";
