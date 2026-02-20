@@ -18,7 +18,9 @@ function createManager(): EnhancedRSAManager {
   });
 }
 
-async function getPrivateKey(manager: EnhancedRSAManager): Promise<string | null> {
+async function getPrivateKey(
+  manager: EnhancedRSAManager,
+): Promise<string | null> {
   return (manager as any).getPrivateKey();
 }
 

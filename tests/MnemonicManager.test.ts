@@ -2,10 +2,7 @@
  * MnemonicManager: generateMnemonic, mnemonicToSeed, validateMnemonic.
  */
 
-import {
-  createNodeRandomValues,
-  MnemonicManager,
-} from "../src/index";
+import { createNodeRandomValues, MnemonicManager } from "../src/index";
 
 // Valid 24 words from BIP39 wordlist (MnemonicManager validates wordlist, not checksum)
 const VALID_24_WORDS =
